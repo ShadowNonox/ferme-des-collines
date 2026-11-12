@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>La Ferme des Collines</title>
+<meta name="description" content="Jeu de gestion de ferme : élève des animaux, embauche des fermiers et bâtis le plus grand domaine de la vallée !">
+<meta name="theme-color" content="#5bb047">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🐄</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="top" id="top">
+  <div class="brand">
+    <span class="brand-ico">🐄</span>
+    <div class="brand-txt"><h1>La Ferme des Collines</h1><small id="season-label">Saison 1</small></div>
+  </div>
+  <div class="wallet">
+    <div class="money" id="money-box"><span class="coin">🪙</span><span id="money">0</span></div>
+    <div class="rate"><span id="rate">0</span>&nbsp;/s<span id="boost" class="boost hidden"></span></div>
+  </div>
+  <div class="clover-pill" title="Trèfles d'or"><span>🍀</span><span id="clovers">0</span></div>
+</header>
+
+<section id="pasture" class="pasture" aria-label="Ta ferme">
+  <div class="sun"></div>
+  <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+  <div class="hill hill-back"></div>
+  <div class="hill hill-front"></div>
+  <div class="farmhouse">🏡</div>
+  <div class="fence"></div>
+  <div id="scene" class="scene"></div>
+  <div class="pasture-tip" id="pasture-tip">Caresse tes animaux pour gagner des pièces ❤️</div>
+</section>
+
+<nav class="tabs" id="tabs">
+  <button data-tab="farm" class="active"><span>🚜</span><b>Ferme</b></button>
+  <button data-tab="upgrades"><span>🔧</span><b>Améliorations</b><i class="badge" id="badge-upgrades"></i></button>
+  <button data-tab="managers"><span>👩‍🌾</span><b>Fermiers</b><i class="badge" id="badge-managers"></i></button>
+  <button data-tab="season"><span>🍀</span><b>Saison</b><i class="badge" id="badge-season"></i></button>
+  <button data-tab="more"><span>🏆</span><b>Succès</b><i class="badge" id="badge-more"></i></button>
+</nav>
+
+<main>
+  <section id="tab-farm" class="tab active">
+    <div class="toolbar">
+      <h2>Mes activités</h2>
+      <div class="buymode" id="buymode">
+        <button data-mode="1">x1</button>
+        <button data-mode="10">x10</button>
+        <button data-mode="100">x100</button>
+        <button data-mode="ms">Palier</button>
+        <button data-mode="max">Max</button>
+      </div>
+    </div>
+    <div id="biz-list" class="biz-list"></div>
+  </section>
+
+  <section id="tab-upgrades" class="tab">
+    <div class="toolbar">
+      <h2>Améliorations</h2>
+      <button id="buy-all-upg" class="btn btn-gold">Tout acheter</button>
+    </div>
+    <p class="hint-text">Chaque amélioration multiplie les gains d'une activité, ou de toute la ferme.</p>
+    <div id="upg-list" class="grid-list"></div>
+  </section>
+
+  <section id="tab-managers" class="tab">
+    <div class="toolbar"><h2>Fermiers</h2></div>
+    <p class="hint-text">Un fermier fait tourner son activité tout seul, même quand tu n'es pas là.</p>
+    <div id="mgr-list" class="grid-list"></div>
+  </section>
+
+  <section id="tab-season" class="tab">
+    <div id="season-panel"></div>
+  </section>
+
+  <section id="tab-more" class="tab">
+    <div class="toolbar"><h2>Succès <small id="ach-count"></small></h2></div>
+    <p class="hint-text">Chaque succès débloqué augmente tous tes revenus de 2 %.</p>
+    <div id="ach-list" class="ach-grid"></div>
+    <div class="toolbar"><h2>Statistiques</h2></div>
+    <div id="stats" class="stats"></div>
+    <div class="toolbar"><h2>Options</h2></div>
+    <div class="options">
+      <button class="btn" id="opt-sound">🔊 Son : activé</button>
+      <button class="btn" id="opt-save">💾 Sauvegarder</button>
+      <button class="btn" id="opt-export">📤 Exporter</button>
+      <button class="btn" id="opt-import">📥 Importer</button>
+      <button class="btn btn-red" id="opt-reset">🗑️ Tout recommencer</button>
+    </div>
+    <p class="credits">La Ferme des Collines — un jeu original. Sauvegarde automatique toutes les 10 secondes.</p>
+  </section>
+</main>
+
+<div id="toasts" class="toasts"></div>
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true">
+  <div class="modal-card">
+    <h3 id="modal-title"></h3>
+    <div id="modal-body"></div>
+    <div id="modal-actions" class="modal-actions"></div>
+  </div>
+</div>
+<div id="fx" class="fx"></div>
+<script src="game.js"></script>
+</body>
+</html>
